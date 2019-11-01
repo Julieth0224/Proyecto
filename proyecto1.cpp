@@ -79,6 +79,10 @@ void base_case1234(map<char, char> &mp1, map<char, string> &mp2, string str){//M
     cout << endl;
     m_find(mp1, sim1);
     m_find(mp1, sim2);
+    m_find(mp2, cop4);
+    cout << endl;
+    m_find(mp1, sim1);
+    m_find(mp1, sim2);
     m_find(mp1, sim3);
     m_find(mp1, sim4);
     cout << endl;
@@ -123,6 +127,6 @@ int main(){
   string x;
   cin >> x;
   base_case1234(map_char, map_magic, x); // Prueba
-  
+
   return 0;
 }
