@@ -2,23 +2,26 @@
 #include <string>
 #include <set>
 using namespace std;
-/*
-bool four(string &f){
-  int i = 0;
-  string n = f;
-  while(n[0]!=' '){
-    i++;
-    n.erase(n.begin());
-    cout << n << endl;
-  }
-  if(i > 4){
-    return false;
-  }
-  else{
-    return four(n);
-  }
 
-}*/
+bool four(string f){
+  int i = 0;
+  for(unsigned q = 0; q < f.size(); q++){
+    i++;
+    if((f[q]==' ' && i <= 5)){
+      i = 0;
+    }
+    else if(i > 4){
+      return false;
+    }
+    else{
+      continue;
+    }
+    if(i > 4){
+      return false;
+    }
+  }
+  return true;
+}
 
 set<string> Partitions(string s) {
   set <string> sub;
@@ -42,11 +45,23 @@ set<string> Partitions(string s) {
   }
 }
 int main(){
+  string d = "aaaaa aa aaaa";
   set <string>::iterator it2;
-  set<string> g = Partitions("abcdefgh");
+  set<string> g = Partitions("++++++");
+  set<string> n;
   for( it2 = g.begin(); it2!=g.end(); ++it2){
-    cout << *it2 << endl;
+    string h = *it2;
+    if(four(h)){
+      n.insert(h);
+    }
+    else{
+      g.erase(g.find(h));
+    }
   }
+  for(auto it3 = n.begin(); it3!=n.end(); ++it3){
+    cout << *it3 << endl;
+  }
+  cout << boolalpha << four(d) << endl;
 
   return 0;
 }
